@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chart.js</title>
+
+        <meta name="viewport" content="width=device-width">
+
+        <style>
+            body {
+                -ms-touch-action: none !important;
+            }
+
+            #canvasContainer {
+                height: 400px;
+                -ms-overflow-style: none;
+                -ms-touch-action: pan-x;
+                overflow-x: auto;
+                overflow-y: hidden;
+                width: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="canvasContainer">
+            <canvas id="myChart" width="800" height="400"></canvas>
+        </div>
+
+        <script src="//code.jquery.com/jquery-2.0.0.js"></script>
+        <script src="Chart.js"></script>
+
+        <script>
+            var data = {
+                labels: ["09 MAR 2013", "21 DEC 2012", "22 NOV 2012", "10 NOV 2012", "12 SEP 2012"],
+                datasets: [
+                    {
+                        fillColor: "#5d6f7d",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        data: [300, 508.50, 201.78, 456.12, 2.00]
+                    },
+                    {
+                        fillColor: "#5d6f7d",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        data: [300, 508.50, 201.78, 456.12, 2.00]
+                    }
+                ]
+            };
+
+            var options = {
+                //Boolean - If we show the scale above the chart data
+                scaleOverlay: false,
+
+                //Boolean - If we want to override with a hard coded scale
+                scaleOverride: true,
+
+                //** Required if scaleOverride is true **
+                //Number - The number of steps in a hard coded scale
+                scaleSteps: 5,
+                //Number - The value jump in the hard coded scale
+                scaleStepWidth: 100,
+                //Number - The scale starting value
+                scaleStartValue: 0,
+
+                //String - Colour of the scale line
+                scaleLineColor: "rgba(0,0,0,.1)",
+
+                //Number - Pixel width of the scale line
+                scaleLineWidth: 1,
+
+                //Boolean - Whether to show labels on the scale
+                scaleShowLabels: false,
+
+                //Interpolated JS string - can access value
+                scaleLabel: "<%=value%>",
+
+                //String - Scale label font declaration for the scale label
+                scaleFontFamily: "'Arial'",
+
+                //Number - Scale label font size in pixels
+                scaleFontSize: 15,
+
+                //String - Scale label font weight style
+                scaleFontStyle: "normal",
+
+                //String - Scale label font colour
+                scaleFontColor: "#666",
+
+                ///Boolean - Whether grid lines are shown across the chart
+                scaleShowGridLines: false,
+
+                //String - Colour of the grid lines
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+
+                //Number - Width of the grid lines
+                scaleGridLineWidth: 1,
+
+                //Boolean - Whether the line is curved between points
+                bezierCurve: false,
+
+                //Boolean - Whether to show a dot for each point
+                pointDot: true,
+
+                //Number - Radius of each point dot in pixels
+                pointDotRadius: 15,
+
+                //Number - Pixel width of point dot stroke
+                pointDotStrokeWidth: 1,
+
+                //Boolean - Whether to show a stroke for datasets
+                datasetStroke: false,
+
+                //Number - Pixel width of dataset stroke
+                datasetStrokeWidth: 2,
+
+                //Boolean - Whether to fill the dataset with a colour
+                datasetFill: true,
+
+                //Boolean - Whether to animate the chart
+                animation: true,
+
+                //Number - Number of animation steps
+                animationSteps: 60,
+
+                //String - Animation easing effect
+                animationEasing: "easeOutQuart",
+
+                //Function - Fires when the animation is complete
+                onAnimationComplete: null
+            };
+
+            // Get context with jQuery - using jQuery's .get() method.
+            var ctx = $("#myChart").get(0).getContext("2d");
+
+            // This will get the first returned node in the jQuery collection.
+            var myNewChart = new Chart(ctx).Line(data, options);
+        </script>
+    </body>
+</html>
